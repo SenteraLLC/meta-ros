@@ -9,6 +9,8 @@ bzip2:
 - bzip2@openembedded-core
 clang-format:
 - clang-format@meta-ros
+clang-tidy:
+- 'null'
 cmake:
 - cmake@openembedded-core
 cppcheck:
@@ -32,6 +34,8 @@ gtk3:
 - gtk+3@openembedded-core
 libboost-program-options-dev:
 - boost@openembedded-core
+libboost-system-dev:
+- 'null'
 libcairo2-dev:
 - cairo@openembedded-core
 libceres-dev:
@@ -52,6 +56,8 @@ libgoogle-glog-dev:
 - glog@meta-oe
 libgpgme-dev:
 - gpgme@openembedded-core
+libogg:
+- libogg@openembedded-core
 libopencv-dev:
 - opencv@meta-oe
 libopensplice69:
@@ -74,6 +80,8 @@ libsqlite3-dev:
 - sqlite3@openembedded-core
 libssl-dev:
 - openssl@openembedded-core
+libtheora:
+- libtheora@openembedded-core
 libusb-1.0-dev:
 - libusb1@openembedded-core
 libx11-dev:
@@ -108,6 +116,8 @@ pydocstyle:
 - ${PYTHON_PN}-pydocstyle@meta-ros
 pyflakes3:
 - ${PYTHON_PN}-pyflakes@meta-ros
+pyqt5-dev-tools:
+- 'null'
 python-sphinx:
 - ${PYTHON_PN}-sphinx@meta-ros
 python3-catkin-pkg-modules:
@@ -128,6 +138,8 @@ python3-mock:
 - python3-mock@meta-ros
 python3-nose:
 - python3-nose@openembedded-core
+python3-nose-yanc:
+- python3-nose-yanc@meta-ros
 python3-numpy:
 - python3-numpy@openembedded-core
 python3-opencv:
@@ -142,6 +154,8 @@ python3-pydot:
 - python3-pydot@meta-ros
 python3-pygraphviz:
 - python3-pygraphviz@meta-ros
+python3-pyqt5.qtwebengine:
+- 'null'
 python3-pytest:
 - python3-pytest@meta-python
 python3-qt5-bindings:
@@ -154,8 +168,14 @@ qt5-qmake:
 - qtbase@meta-qt5
 qtbase5-dev:
 - qtbase@meta-qt5
+qttools5-dev-tools:
+- 'null'
 rti-connext-dds-5.3.1:
 - 'null'
+sdl:
+- libsdl@openembedded-core
+sdl-image:
+- libsdl-image@meta-oe
 tango-icon-theme:
 - 'null'
 tinyxml:
