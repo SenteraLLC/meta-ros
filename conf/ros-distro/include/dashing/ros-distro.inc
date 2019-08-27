@@ -14,7 +14,7 @@ ROS_DISTRO_RELEASE_DATE = "20190531"
 ROS_DISTRO_BASELINE_PLATFORM = "ubuntu-bionic"
 
 # Set this here, as each ROS distro will must be tested separately with each OE-Core release.
-LAYERSERIES_COMPAT_ros-layer = "thud"
+LAYERSERIES_COMPAT_ros-layer = "thud rocko"
 
 # Override settings from generated-ros-distro.inc here.
 
