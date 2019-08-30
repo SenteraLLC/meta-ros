@@ -17,16 +17,25 @@ ROS_BPN = "rcl_interfaces"
 
 ROS_BUILD_DEPENDS = " \
     builtin-interfaces \
+    rosidl-adapter \
 "
 
 ROS_BUILDTOOL_DEPENDS = " \
+    python3-numpy-native \
+    python3-lark-parser-native \
     ament-cmake-native \
     rosidl-default-generators-native \
+    rosidl-parser-native \
+    rosidl-adapter-native \
 "
 
 ROS_EXPORT_DEPENDS = " \
     builtin-interfaces \
 "
+
+# Manually include the numpy directory, not sure why this is required
+CXXFLAGS += " -I${STAGING_LIBDIR}/${PYTHON_DIR}/site-packages/numpy/core/include"
+CFLAGS += " -I${STAGING_LIBDIR}/${PYTHON_DIR}/site-packages/numpy/core/include"
 
 ROS_BUILDTOOL_EXPORT_DEPENDS = ""
 

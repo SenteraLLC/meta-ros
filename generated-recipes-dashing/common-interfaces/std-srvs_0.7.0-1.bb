@@ -15,12 +15,22 @@ LIC_FILES_CHKSUM = "file://package.xml;beginline=8;endline=8;md5=12c26a18c7f493f
 ROS_CN = "common_interfaces"
 ROS_BPN = "std_srvs"
 
-ROS_BUILD_DEPENDS = ""
+ROS_BUILD_DEPENDS = " \
+    python3-numpy \
+"
 
 ROS_BUILDTOOL_DEPENDS = " \
+    python3-numpy-native \
+    python3-lark-parser-native \
+    rosidl-adapter-native \
+    rosidl-parser-native \
     ament-cmake-native \
     rosidl-default-generators-native \
 "
+
+# Manually include the numpy directory, not sure why this is required
+CXXFLAGS += " -I${STAGING_LIBDIR}/${PYTHON_DIR}/site-packages/numpy/core/include"
+CFLAGS += " -I${STAGING_LIBDIR}/${PYTHON_DIR}/site-packages/numpy/core/include"
 
 ROS_EXPORT_DEPENDS = ""
 

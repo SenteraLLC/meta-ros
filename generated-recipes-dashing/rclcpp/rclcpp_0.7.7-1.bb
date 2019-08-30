@@ -28,6 +28,8 @@ ROS_BUILD_DEPENDS = " \
 "
 
 ROS_BUILDTOOL_DEPENDS = " \
+    python3-empy-native \
+    rcutils-native \
     ament-cmake-ros-native \
 "
 

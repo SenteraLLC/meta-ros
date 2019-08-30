@@ -17,6 +17,7 @@ ROS_CN = "rmw_fastrtps"
 ROS_BPN = "rmw_fastrtps_shared_cpp"
 
 ROS_BUILD_DEPENDS = " \
+    rosidl-cmake \
     fastcdr \
     fastrtps \
     fastrtps-cmake-module \

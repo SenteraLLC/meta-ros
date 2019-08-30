@@ -16,10 +16,15 @@ ROS_CN = "rosidl"
 ROS_BPN = "rosidl_adapter"
 
 ROS_BUILD_DEPENDS = " \
+    ament-package \
     ament-cmake \
+    ament-cmake-libraries \
 "
 
-ROS_BUILDTOOL_DEPENDS = ""
+ROS_BUILDTOOL_DEPENDS = " \
+    ament-cmake-native \
+    ament-package-native \
+"
 
 ROS_EXPORT_DEPENDS = ""
 
