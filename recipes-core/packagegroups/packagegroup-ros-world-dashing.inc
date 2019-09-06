@@ -14,6 +14,10 @@ RDEPENDS_${PN}_remove = "ament-cmake-gmock"
 RDEPENDS_${PN}_remove = "ament-cmake-gtest"
 RDEPENDS_${PN}_remove = "ament-cmake-pytest"
 RDEPENDS_${PN}_remove = "ament-cmake-ros"
+RDEPENDS_${PN}_remove = "ament-cmake-clang"
+RDEPENDS_${PN}_remove = "ament-cmake-copyright"
+RDEPENDS_${PN}_remove = "ament-cmake-xmllint"
+RDEPENDS_${PN}_remove = "ament-cmake-pep257"
 RDEPENDS_${PN}_remove = "ament-index-cpp"
 RDEPENDS_${PN}_remove = "ament-index-python"
 RDEPENDS_${PN}_remove = "ament-lint-auto"
@@ -24,9 +28,11 @@ RDEPENDS_${PN}_remove = "ament-cmake-flake8"
 RDEPENDS_${PN}_remove = "ament-cmake-pep8"
 RDEPENDS_${PN}_remove = "ament-cmake-pyflakes"
 
-# Can't build these until we figure out how to build clang-format without building all of clang.
+# Can't build these until we figure out how to build clang-format/tidy without building all of clang.
 RDEPENDS_${PN}_remove = "ament-clang-format"
 RDEPENDS_${PN}_remove = "ament-cmake-clang-format"
+RDEPENDS_${PN}_remove = "ament-clang-tidy"
+RDEPENDS_${PN}_remove = "ament-cmake-clang-tidy"
 
 # Not used by "dashing"; this allows us to defer fixing log4cxx v0.10.0-13 until working on "melodic".
 RDEPENDS_${PN}_remove = "rcl-logging-log4cxx"
@@ -36,6 +42,13 @@ RDEPENDS_${PN}_remove = "launch-testing"
 RDEPENDS_${PN}_remove = "launch-testing-ament-cmake"
 RDEPENDS_${PN}_remove = "launch-testing-ros"
 RDEPENDS_${PN}_remove = "ros-testing"
+RDEPENDS_${PN}_remove = "test-msgs"
+RDEPENDS_${PN}_remove = "test-interface-files"
+
+# Sentera build issues
+RDEPENDS_${PN}_remove = "navigation2"
+RDEPENDS_${PN}_remove = "nav2_msgs"
+RDEPENDS_${PN}_remove = "test_msgs"
 
 # | CMake Error at .../cartographer/1.0.0-1-r0/recipe-sysroot/usr/lib/cmake/Ceres/CeresConfig.cmake:88 (message):
 # |   Failed to find Ceres - Missing requested Ceres components: [SuiteSparse]
@@ -53,6 +66,7 @@ RDEPENDS_${PN}_remove = "cartographer"
 # ERROR: Function failed: do_compile
 RDEPENDS_${PN}_remove = "fmi-adapter"
 RDEPENDS_${PN}_remove = "fmi-adapter-examples"
+RDEPENDS_${PN}_remove = "fmilibrary-vendor"
 
 # Call of overloaded function is ambiguous:
 # | from .../teleop_twist_joy-release-release-dashing-teleop_twist_joy-2.2.0-1/src/teleop_twist_joy.cpp:28:
@@ -91,6 +105,12 @@ RDEPENDS_${PN}_remove = "${@bb.utils.contains('DISTRO_FEATURES', 'ros-qt5', '', 
 RDEPENDS_${PN}_remove = "${@bb.utils.contains('DISTRO_FEATURES', 'ros-qt5', '', 'qt-gui-cpp', d)}"
 RDEPENDS_${PN}_remove = "${@bb.utils.contains('DISTRO_FEATURES', 'ros-qt5', '', 'qt-gui-py-common', d)}"
 
+# New qt dependancies
+RDEPENDS_${PN}_remove = "${@bb.utils.contains('DISTRO_FEATURES', 'ros-qt5', '', 'py-trees-ros-viewer', d)}"
+RDEPENDS_${PN}_remove = "${@bb.utils.contains('DISTRO_FEATURES', 'ros-qt5', '', 'py-trees-ros-tutorials', d)}"
+RDEPENDS_${PN}_remove = "${@bb.utils.contains('DISTRO_FEATURES', 'ros-qt5', '', 'py-trees-js', d)}"
+RDEPENDS_${PN}_remove = "${@bb.utils.contains('DISTRO_FEATURES', 'ros-qt5', '', 'rqt-reconfigure', d)}"
+
 RDEPENDS_${PN}_remove = "${@bb.utils.contains('DISTRO_FEATURES', 'ros-rqt ros-qt5', '', 'rqt', d)}"
 RDEPENDS_${PN}_remove = "${@bb.utils.contains('DISTRO_FEATURES', 'ros-rqt ros-qt5', '', 'rqt-action', d)}"
 RDEPENDS_${PN}_remove = "${@bb.utils.contains('DISTRO_FEATURES', 'ros-rqt ros-qt5', '', 'rqt-console', d)}"
@@ -121,3 +141,8 @@ RDEPENDS_${PN}_remove = "${@bb.utils.contains('DISTRO_FEATURES', 'ros-rviz openg
 RDEPENDS_${PN}_remove = "${@bb.utils.contains('DISTRO_FEATURES', 'ros-rviz opengl', '', 'rviz-rendering-tests', d)}"
 RDEPENDS_${PN}_remove = "${@bb.utils.contains('DISTRO_FEATURES', 'ros-rviz opengl', '', 'rviz-visual-testing-framework', d)}"
 RDEPENDS_${PN}_remove = "${@bb.utils.contains('DISTRO_FEATURES', 'ros-rviz opengl', '', 'rviz2', d)}"
+
+# Not sure why the entire navigation package depends on opengl, but it does
+RDEPENDS_${PN}_remove = "${@bb.utils.contains('DISTRO_FEATURES', 'ros-rviz opengl', '', 'navigation2', d)}"
+RDEPENDS_${PN}_remove = "${@bb.utils.contains('DISTRO_FEATURES', 'ros-rviz opengl', '', 'nav2-rviz-plugins', d)}"
+RDEPENDS_${PN}_remove = "${@bb.utils.contains('DISTRO_FEATURES', 'ros-rviz opengl', '', 'nav2-bringup', d)}"

@@ -21,16 +21,8 @@ ROS_BUILD_DEPENDS = " \
 
 ROS_BUILDTOOL_DEPENDS = " \
     ament-cmake-native \
-    python3-lark-parser-native \
-    python3-numpy-native \
     rosidl-default-generators-native \
-    rosidl-parser-native \
-    rosidl-adapter-native \
 "
-
-# Manually include the numpy directory, not sure why this is required
-CXXFLAGS += " -I${STAGING_LIBDIR}/${PYTHON_DIR}/site-packages/numpy/core/include"
-CFLAGS += " -I${STAGING_LIBDIR}/${PYTHON_DIR}/site-packages/numpy/core/include"
 
 ROS_EXPORT_DEPENDS = " \
     action-msgs \

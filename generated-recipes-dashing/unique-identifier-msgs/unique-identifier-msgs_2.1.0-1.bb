@@ -16,38 +16,14 @@ LIC_FILES_CHKSUM = "file://package.xml;beginline=12;endline=12;md5=d566ef916e9de
 ROS_CN = "unique_identifier_msgs"
 ROS_BPN = "unique_identifier_msgs"
 
-ROS_BUILD_DEPENDS = " \
-    python3-numpy \
-    rosidl-typesupport-c \
-    rosidl-typesupport-cpp \
-"
+ROS_BUILD_DEPENDS = ""
 
 ROS_BUILDTOOL_DEPENDS = " \
-    python3-numpy-native \
-    python3-lark-parser-native \
     ament-cmake-native \
-    ament-cmake-ros-native \
-    rosidl-cmake-native \
-    rosidl-generator-c-native \
-    rosidl-generator-cpp-native \
-    rosidl-generator-py-native \
-    rosidl-typesupport-c-native \
-    rosidl-typesupport-cpp-native \
-    rosidl-typesupport-introspection-c-native \
-    rosidl-typesupport-introspection-cpp-native \
     rosidl-default-generators-native \
-    rosidl-parser-native \
-    rosidl-adapter-native \
 "
 
-# Manually include the numpy directory, not sure why this is required
-#CFLAGS += "ASDFASDFASDFS"
-CXXFLAGS += " -I${STAGING_LIBDIR}/${PYTHON_DIR}/site-packages/numpy/core/include"
-CFLAGS += " -I${STAGING_LIBDIR}/${PYTHON_DIR}/site-packages/numpy/core/include"
-#OECMAKE_CXX_FLAGS += " -I${STAGING_INCDIR}/c++/8.2.0"
-
-ROS_EXPORT_DEPENDS = " \
-"
+ROS_EXPORT_DEPENDS = ""
 
 ROS_BUILDTOOL_EXPORT_DEPENDS = ""
 

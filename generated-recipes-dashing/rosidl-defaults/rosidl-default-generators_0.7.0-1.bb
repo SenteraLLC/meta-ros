@@ -15,7 +15,9 @@ LIC_FILES_CHKSUM = "file://package.xml;beginline=8;endline=8;md5=12c26a18c7f493f
 ROS_CN = "rosidl_defaults"
 ROS_BPN = "rosidl_default_generators"
 
-ROS_BUILD_DEPENDS = ""
+ROS_BUILD_DEPENDS = " \
+    rosidl-generator-py \
+"
 
 ROS_BUILDTOOL_DEPENDS = " \
     ament-cmake-native \
@@ -33,6 +35,8 @@ ROS_BUILDTOOL_EXPORT_DEPENDS = " \
     rosidl-typesupport-cpp-native \
     rosidl-typesupport-introspection-c-native \
     rosidl-typesupport-introspection-cpp-native \
+    rosidl-adapter-native \
+    rosidl-parser-native \ 
 "
 
 ROS_EXEC_DEPENDS = ""

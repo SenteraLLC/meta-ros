@@ -27,6 +27,7 @@ ROS_BUILD_DEPENDS = " \
 
 ROS_BUILDTOOL_DEPENDS = " \
     ament-cmake-native \
+    rosidl-default-generators-native \
 "
 
 ROS_EXPORT_DEPENDS = ""

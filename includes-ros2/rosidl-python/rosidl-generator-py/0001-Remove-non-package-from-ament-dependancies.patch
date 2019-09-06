@@ -1,0 +1,49 @@
+From 0015f60b376825f517b6d739f077ee223b6c8f22 Mon Sep 17 00:00:00 2001
+From: Shane Loretz <sloretz@openrobotics.org>
+Date: Thu, 25 Jul 2019 09:09:19 -0700
+Subject: [PATCH] Remove non-package from ament_target_dependencies() (#76)
+
+* Remove non-package from ament_target_dependencies()
+
+Also set _FOUND to trick ament_target_dependencies() call for test
+interfaces
+
+Signed-off-by: Shane Loretz <sloretz@osrfoundation.org>
+
+* Remove linking call since it wasn't needed before
+
+Signed-off-by: Shane Loretz <sloretz@osrfoundation.org>
+
+* Comment why setting _FOUND
+
+Signed-off-by: Shane Loretz <sloretz@osrfoundation.org>
+---
+ CMakeLists.txt                              | 2 ++
+ rosidl_generator_py_generate_interfaces.cmake         | 1 -
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/rosidl_generator_py/CMakeLists.txt b/rosidl_generator_py/CMakeLists.txt
+index e0f4ecd..6ea6f5b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -49,6 +49,8 @@ if(BUILD_TESTING)
+   include(cmake/register_py.cmake)
+   include(cmake/rosidl_generator_py_get_typesupports.cmake)
+ 
++  # Trick ament_target_dependencies() into thinking this package has been found
++  set(rosidl_generator_py_FOUND "1")
+   set(rosidl_generator_py_DIR "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+ 
+   # Need to call extras before get_typesupports, to register the extension
+diff --git a/cmake/rosidl_generator_py_generate_interfaces.cmake b/cmake/rosidl_generator_py_generate_interfaces.cmake
+index 4a28cbb..8c6d2d5 100644
+--- a/cmake/rosidl_generator_py_generate_interfaces.cmake
++++ b/cmake/rosidl_generator_py_generate_interfaces.cmake
+@@ -273,7 +273,6 @@ foreach(_typesupport_impl ${_typesupport_impls})
+   ament_target_dependencies(${_target_name}
+     "rosidl_generator_c"
+     "rosidl_generator_py"
+-    "${rosidl_generate_interfaces_TARGET}__rosidl_generator_c"
+   )
+ 
+   if(NOT rosidl_generate_interfaces_SKIP_INSTALL)

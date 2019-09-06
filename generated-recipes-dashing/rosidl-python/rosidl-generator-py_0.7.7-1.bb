@@ -27,6 +27,7 @@ ROS_EXPORT_DEPENDS = " \
 "
 
 ROS_BUILDTOOL_EXPORT_DEPENDS = " \
+    python3-numpy-native \
     ament-cmake-native \
     ament-index-python-native \
     python-cmake-module-native \
