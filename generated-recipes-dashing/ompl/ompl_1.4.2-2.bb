@@ -54,6 +54,12 @@ SRC_URI[md5sum] = "11cecca250b3b5cb6debfa64cd071de3"
 SRC_URI[sha256sum] = "06cd4af5ccb402f03a41db9d063451a4500bea982933d2f5b23fd514ff47b08e"
 S = "${WORKDIR}/ompl-release-release-dashing-ompl-1.4.2-2"
 
+
+# Prevent RPATH Redundant Error
+EXTRA_OECMAKE += "\
+    -DCMAKE_SKIP_RPATH=ON \
+"
+
 ROS_COMPONENT_TYPE = "${@ros_distro__get_component_type('ompl', d)}"
 ROS_BUILD_TYPE = "cmake"
 

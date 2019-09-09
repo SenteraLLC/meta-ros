@@ -17,12 +17,12 @@ ROS_BPN = "nav_2d_msgs"
 
 ROS_BUILD_DEPENDS = " \
     geometry-msgs \
-    rosidl-default-generators \
     std-msgs \
 "
 
 ROS_BUILDTOOL_DEPENDS = " \
     ament-cmake-native \
+    rosidl-default-generators-native \
 "
 
 ROS_EXPORT_DEPENDS = " \

@@ -23,6 +23,7 @@ ROS_BUILD_DEPENDS = " \
 "
 
 ROS_BUILDTOOL_DEPENDS = " \
+    python-cmake-module-native \
     ament-cmake-ros-native \
 "
 

@@ -17,12 +17,13 @@ ROS_CN = "ackermann_msgs"
 ROS_BPN = "ackermann_msgs"
 
 ROS_BUILD_DEPENDS = " \
+    std-msgs \
     builtin-interfaces \
-    rosidl-default-generators \
 "
 
 ROS_BUILDTOOL_DEPENDS = " \
     ament-cmake-native \
+    rosidl-default-generators-native \
 "
 
 ROS_EXPORT_DEPENDS = ""

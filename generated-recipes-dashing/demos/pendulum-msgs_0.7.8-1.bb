@@ -18,11 +18,11 @@ ROS_BPN = "pendulum_msgs"
 
 ROS_BUILD_DEPENDS = " \
     builtin-interfaces \
-    rosidl-default-generators \
 "
 
 ROS_BUILDTOOL_DEPENDS = " \
     ament-cmake-native \
+    rosidl-default-generators-native \
 "
 
 ROS_EXPORT_DEPENDS = ""

@@ -19,12 +19,12 @@ ROS_BPN = "py_trees_ros_interfaces"
 ROS_BUILD_DEPENDS = " \
     action-msgs \
     geometry-msgs \
-    rosidl-default-generators \
     unique-identifier-msgs \
 "
 
 ROS_BUILDTOOL_DEPENDS = " \
     ament-cmake-native \
+    rosidl-default-generators-native \
 "
 
 ROS_EXPORT_DEPENDS = " \

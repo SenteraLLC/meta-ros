@@ -45,10 +45,36 @@ RDEPENDS_${PN}_remove = "ros-testing"
 RDEPENDS_${PN}_remove = "test-msgs"
 RDEPENDS_${PN}_remove = "test-interface-files"
 
-# Sentera build issues
+# Sentera build issues with navigation 2, so just pull it all out
+# At the root, it appears to be a fault in nav2-msgs and the cmake file, but we don't really need it right now
+# Stupidly, they also don't maintain their own namespace and dwb_ also falls under nav2 using packages
+# In short, I hate whoever wrote navigation2
 RDEPENDS_${PN}_remove = "navigation2"
-RDEPENDS_${PN}_remove = "nav2_msgs"
-RDEPENDS_${PN}_remove = "test_msgs"
+RDEPENDS_${PN}_remove = "nav-2d-messages"
+RDEPENDS_${PN}_remove = "nav-2d-utils"
+RDEPENDS_${PN}_remove = "nav2-dwb-controller"
+RDEPENDS_${PN}_remove = "nav2-amcl"
+RDEPENDS_${PN}_remove = "nav2-behavior-tree"
+RDEPENDS_${PN}_remove = "nav2-bringup"
+RDEPENDS_${PN}_remove = "nav2-bt-navigator"
+RDEPENDS_${PN}_remove = "nav2-common"
+RDEPENDS_${PN}_remove = "nav2-costmap-2d"
+RDEPENDS_${PN}_remove = "nav2-dynamic-params"
+RDEPENDS_${PN}_remove = "nav2-lifecycle-manager"
+RDEPENDS_${PN}_remove = "nav2-map-server"
+RDEPENDS_${PN}_remove = "nav2-msgs"
+RDEPENDS_${PN}_remove = "nav2-navfn-planner"
+RDEPENDS_${PN}_remove = "nav2-recoveries"
+RDEPENDS_${PN}_remove = "nav2-rviz-plugins"
+RDEPENDS_${PN}_remove = "nav2-util"
+RDEPENDS_${PN}_remove = "nav2-voxel-grid"
+RDEPENDS_${PN}_remove = "nav2-world-model"
+RDEPENDS_${PN}_remove = "dwb-controller"
+RDEPENDS_${PN}_remove = "dwb-core"
+RDEPENDS_${PN}_remove = "dwb-critics"
+RDEPENDS_${PN}_remove = "dwb-msgs"
+RDEPENDS_${PN}_remove = "dwb-plugins"
+RDEPENDS_${PN}_remove = "costmap-queue"
 
 # | CMake Error at .../cartographer/1.0.0-1-r0/recipe-sysroot/usr/lib/cmake/Ceres/CeresConfig.cmake:88 (message):
 # |   Failed to find Ceres - Missing requested Ceres components: [SuiteSparse]
@@ -141,8 +167,3 @@ RDEPENDS_${PN}_remove = "${@bb.utils.contains('DISTRO_FEATURES', 'ros-rviz openg
 RDEPENDS_${PN}_remove = "${@bb.utils.contains('DISTRO_FEATURES', 'ros-rviz opengl', '', 'rviz-rendering-tests', d)}"
 RDEPENDS_${PN}_remove = "${@bb.utils.contains('DISTRO_FEATURES', 'ros-rviz opengl', '', 'rviz-visual-testing-framework', d)}"
 RDEPENDS_${PN}_remove = "${@bb.utils.contains('DISTRO_FEATURES', 'ros-rviz opengl', '', 'rviz2', d)}"
-
-# Not sure why the entire navigation package depends on opengl, but it does
-RDEPENDS_${PN}_remove = "${@bb.utils.contains('DISTRO_FEATURES', 'ros-rviz opengl', '', 'navigation2', d)}"
-RDEPENDS_${PN}_remove = "${@bb.utils.contains('DISTRO_FEATURES', 'ros-rviz opengl', '', 'nav2-rviz-plugins', d)}"
-RDEPENDS_${PN}_remove = "${@bb.utils.contains('DISTRO_FEATURES', 'ros-rviz opengl', '', 'nav2-bringup', d)}"

@@ -20,13 +20,13 @@ ROS_BUILD_DEPENDS = " \
     libeigen \
     pluginlib \
     rclcpp \
-    rosidl-default-generators \
     std-msgs \
 "
 
 ROS_BUILDTOOL_DEPENDS = " \
     ament-cmake-native \
     ros-environment-native \
+    rosidl-default-generators-native \
 "
 
 ROS_EXPORT_DEPENDS = " \
