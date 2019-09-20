@@ -1,0 +1,49 @@
+From cdf50afa4edaa6ac047da4c52dfea3ef026bf4d6 Mon Sep 17 00:00:00 2001
+From: Zach Thorson <zach.thorson@sentera.com>
+Date: Fri, 20 Sep 2019 16:45:51 -0500
+Subject: [PATCH 2/2] FindTinyXML2: use pkg-config to find tinyxml2
+
+Pulled from meta-ros2 old package patches and updated to 1.8.0
+
+* otherwise it finds the whole path to RSS inside fastrtps and then uses
+  it in fastrtpsTargets.cmake which brakes users of this (e.g. rmw-fastrtps-cpp)
+  when they are built after fastrtps WORKDIR was already removed (e.g. with rm-work)
+
+  fastrtps/git-r0 $ grep -B 1 -A 1 work  image/usr/lib/fastrtps/cmake/fastrtpsTargets.cmake
+  set_target_properties(fastrtps PROPERTIES
+    INTERFACE_LINK_LIBRARIES "-lpthread;/OE/build/oe-core/tmp-glibc/work/aarch64-oe-linux/fastrtps/git-r0/recipe-sysroot/usr/lib/libtinyxml2.so"
+  )
+---
+ cmake/modules/FindTinyXML2.cmake | 16 ++++------------
+ 1 file changed, 4 insertions(+), 12 deletions(-)
+
+diff --git a/cmake/modules/FindTinyXML2.cmake b/cmake/modules/FindTinyXML2.cmake
+index a4bce1e1..47f9aa57 100644
+--- a/cmake/modules/FindTinyXML2.cmake
++++ b/cmake/modules/FindTinyXML2.cmake
+@@ -4,18 +4,10 @@
+ 
+ option(TINYXML2_FROM_SOURCE "Integrate TinyXML2 source code inside Fast RTPS" OFF)
+ 
+-find_package(TinyXML2 CONFIG QUIET)
+-if(TinyXML2_FOUND AND NOT THIRDPARTY)
+-    message(STATUS "Found TinyXML2: ${TinyXML2_DIR}")
+-    if(NOT TINYXML2_LIBRARY)
+-        # in this case, we're probably using TinyXML2 version 5.0.0 or greater
+-        # in which case tinyxml2 is an exported target and we should use that
+-        if(TARGET tinyxml2)
+-          set(TINYXML2_LIBRARY tinyxml2)
+-        elseif(TARGET tinyxml2::tinyxml2)
+-          set(TINYXML2_LIBRARY tinyxml2::tinyxml2)
+-        endif()
+-    endif()
++find_package(PkgConfig)
++pkg_check_modules(TinyXML2 REQUIRED tinyxml2)
++if(TinyXML2_FOUND)
++    set(TINYXML2_LIBRARY ${TinyXML2_LIBRARIES})
+ else()
+     if(THIRDPARTY OR ANDROID)
+         set(TINYXML2_FROM_SOURCE ON)
+-- 
+2.17.1
+

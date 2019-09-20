@@ -1,0 +1,30 @@
+From 03b7260f846c2761e83d5e40fad2ce7175c8923e Mon Sep 17 00:00:00 2001
+From: Zach Thorson <zach.thorson@sentera.com>
+Date: Fri, 20 Sep 2019 16:39:12 -0500
+Subject: [PATCH 1/2] Don't Use INSTALL_INTERFACE
+
+Pulled from old ros2 patch files and updated for 1.8.0
+
+The build system adds `include` as a system headers folder, but in combination
+with having --sysroot option set for gcc makes gcc ignore the folder.
+
+Upstream-Status: Inappropriate [the line is legit, but breaks in Yocto]
+---
+ src/cpp/CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/cpp/CMakeLists.txt b/src/cpp/CMakeLists.txt
+index 8249018d..fa6eebfa 100644
+--- a/src/cpp/CMakeLists.txt
++++ b/src/cpp/CMakeLists.txt
+@@ -274,7 +274,6 @@ elseif(NOT EPROSIMA_INSTALLER)
+         $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/include>
+         $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/include/${PROJECT_NAME}>
+         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src/cpp>
+-        $<INSTALL_INTERFACE:include>
+         PRIVATE
+         ${ASIO_INCLUDE_DIR}
+         ${TINYXML2_INCLUDE_DIR}
+-- 
+2.17.1
+

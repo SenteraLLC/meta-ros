@@ -49,7 +49,11 @@ DEPENDS += "${ROS_EXPORT_DEPENDS} ${ROS_BUILDTOOL_EXPORT_DEPENDS}"
 
 RDEPENDS_${PN} += "${ROS_EXEC_DEPENDS}"
 
-SRC_URI = "https://github.com/ros2-gbp/fastrtps-release/archive/release/dashing/fastrtps/1.8.0-2.tar.gz;downloadfilename=${ROS_SP}.tar.gz"
+SRC_URI = "https://github.com/ros2-gbp/fastrtps-release/archive/release/dashing/fastrtps/1.8.0-2.tar.gz;downloadfilename=${ROS_SP}.tar.gz \
+    file://0001-Don-t-Use-INSTALL_INTERFACE.patch \
+    file://0002-FindTinyXML2-use-pkg-config-to-find-tinyxml2.patch \
+"
+
 SRC_URI[md5sum] = "a24b37f5eec9cd2664700e7ad6ef8ff3"
 SRC_URI[sha256sum] = "3101b12f9fe781c7d9560496a6ab0dd5af95dfbae0d1cf073af18baff8aeac9b"
 S = "${WORKDIR}/fastrtps-release-release-dashing-fastrtps-1.8.0-2"
