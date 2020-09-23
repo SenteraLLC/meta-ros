@@ -37,9 +37,11 @@ DEPENDS += "${ROS_EXPORT_DEPENDS} ${ROS_BUILDTOOL_EXPORT_DEPENDS}"
 
 RDEPENDS_${PN} += "${ROS_EXEC_DEPENDS}"
 
-SRC_URI = "https://github.com/ros2-gbp/osrf_testings_tools_cpp-release/archive/release/dashing/osrf_testing_tools_cpp/1.2.1-1.tar.gz;downloadfilename=${ROS_SP}.tar.gz"
-SRC_URI[md5sum] = "c7fa9ded554908a0179d29f3fde44ba8"
-SRC_URI[sha256sum] = "fa05588eb92e0f73a87bce1ab9129703553f4bf6e9c8192b6f0da1e8929d9456"
+SRC_URI = "https://github.com/ros2-gbp/osrf_testing_tools_cpp-release/archive/release/dashing/osrf_testing_tools_cpp/1.2.1-1.tar.gz;downloadfilename=${ROS_SP}.tar.gz"
+SRC_URI[md5sum] = "c5f748bb592a48e68d71452de585c23d"
+SRC_URI[sha256sum] = "4911a465138ad1e3c3876c96b6b3e8e0a39418ae6b51ef355d6badf919d06ab3"
+
+# Note this S variable gets reset in include/osrf-testing-tools-cpp-1.2.1-1_common.inc for some reason
 S = "${WORKDIR}/osrf_testings_tools_cpp-release-release-dashing-osrf_testing_tools_cpp-1.2.1-1"
 
 ROS_COMPONENT_TYPE = "${@ros_distro__get_component_type('osrf-testing-tools-cpp', d)}"
