@@ -42,15 +42,18 @@ RDEPENDS_${PN} += "${ROS_EXEC_DEPENDS}"
 SRC_URI = "https://github.com/ros2-gbp/osrf_testings_tools_cpp-release/archive/release/dashing/test_osrf_testing_tools_cpp/1.2.1-1.tar.gz;downloadfilename=${ROS_SP}.tar.gz"
 SRC_URI[md5sum] = "334051532089831361437a78d9189804"
 SRC_URI[sha256sum] = "c915c2c8f93288002afff83a2d50b2ce77121657a25fb39ff94988480a795a9a"
-S = "${WORKDIR}/osrf_testings_tools_cpp-release-release-dashing-test_osrf_testing_tools_cpp-1.2.1-1"
+S = "${WORKDIR}/osrf_testing_tools_cpp-release-release-dashing-test_osrf_testing_tools_cpp-1.2.1-1"
 
 ROS_COMPONENT_TYPE = "${@ros_distro__get_component_type('osrf-testing-tools-cpp', d)}"
 ROS_BUILD_TYPE = "cmake"
 
 # Allow the above settings to be overridden.
 ROS_INCLUDES_TREE := "${@ros_superflore_generated__get_includes_tree('osrf-testing-tools-cpp', d)}"
-include ${ROS_LAYERDIR}/${ROS_INCLUDES_TREE}/osrf-testing-tools-cpp/osrf-testing-tools-cpp_common.inc
-include ${ROS_LAYERDIR}/${ROS_INCLUDES_TREE}/osrf-testing-tools-cpp/osrf-testing-tools-cpp-${PV}_common.inc
+
+# Since osrf-testing package was updated, the source path now is no longer consistent between the test and package, so dont include the changed .inc file
+# include ${ROS_LAYERDIR}/${ROS_INCLUDES_TREE}/osrf-testing-tools-cpp/osrf-testing-tools-cpp_common.inc
+# include ${ROS_LAYERDIR}/${ROS_INCLUDES_TREE}/osrf-testing-tools-cpp/osrf-testing-tools-cpp-${PV}_common.inc
+
 include ${ROS_LAYERDIR}/${ROS_INCLUDES_TREE}/osrf-testing-tools-cpp/${BPN}.inc
 include ${ROS_LAYERDIR}/${ROS_INCLUDES_TREE}/osrf-testing-tools-cpp/${BPN}-${PV}.inc
 
