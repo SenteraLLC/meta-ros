@@ -40,9 +40,9 @@ DEPENDS += "${ROS_EXPORT_DEPENDS} ${ROS_BUILDTOOL_EXPORT_DEPENDS}"
 RDEPENDS_${PN} += "${ROS_EXEC_DEPENDS}"
 
 SRC_URI = "https://github.com/ros2-gbp/osrf_testings_tools_cpp-release/archive/release/dashing/test_osrf_testing_tools_cpp/1.2.1-1.tar.gz;downloadfilename=${ROS_SP}.tar.gz"
-SRC_URI[md5sum] = "334051532089831361437a78d9189804"
-SRC_URI[sha256sum] = "c915c2c8f93288002afff83a2d50b2ce77121657a25fb39ff94988480a795a9a"
-S = "${WORKDIR}/osrf_testing_tools_cpp-release-release-dashing-test_osrf_testing_tools_cpp-1.2.1-1"
+SRC_URI[md5sum] = "af7dcdee5e30b5ed8d7565952d4dff29"
+SRC_URI[sha256sum] = "4fa0b71d3569062bd768992d3ad500af690ad95f3b53e327f0079297fad4b88c"
+S = "${WORKDIR}/osrf_testings_tools_cpp-release-release-dashing-test_osrf_testing_tools_cpp-1.2.1-1"
 
 ROS_COMPONENT_TYPE = "${@ros_distro__get_component_type('osrf-testing-tools-cpp', d)}"
 ROS_BUILD_TYPE = "cmake"
